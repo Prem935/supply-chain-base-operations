@@ -3,7 +3,6 @@ package com.supply_chain_base_operation.services;
 import com.supply_chain_base_operation.models.Company;
 import com.supply_chain_base_operation.models.Employee;
 import com.supply_chain_base_operation.models.Role;
-import com.supply_chain_base_operation.models.User;
 import com.supply_chain_base_operation.transformers.SystemTransformer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

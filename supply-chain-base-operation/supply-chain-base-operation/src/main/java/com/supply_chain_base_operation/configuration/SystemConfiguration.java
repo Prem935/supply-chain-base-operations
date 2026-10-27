@@ -1,31 +1,41 @@
 package com.supply_chain_base_operation.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Configuration
 public class SystemConfiguration {
 
-    @Value("${spring.mail.username}")
-    public String apiEmailUsername;
+    public String apiEmailUsername = "6206472735rahul@gmail.com";
 
-    @Value("${spring.mail.password}")
-    public String apiEmailPassword;
+    public String apiEmailPassword = "ceffelhhjfderwei";
 
+    @Bean
     public JavaMailSender createJavaMailSender(){
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
         Properties mailProperties = new Properties();
         mailProperties.put("mail.smtp.auth", true);
-        mailProperties.put("mail.smtp.starttle.enable", true);
+        mailProperties.put("mail.smtp.starttls.enable", "true");
+        mailProperties.put("mail.smtp.starttls.required", "true");
         javaMailSender.setJavaMailProperties(mailProperties);
         javaMailSender.setHost("smtp.gmail.com");
         javaMailSender.setPort(587);
         javaMailSender.setUsername(apiEmailUsername);
         javaMailSender.setPassword(apiEmailPassword);
         return javaMailSender;
+    }
+
+    @Bean
+    public ExecutorService createExecutorService(){
+        ExecutorService service = Executors.newFixedThreadPool(5);
+        return service;
     }
 }
