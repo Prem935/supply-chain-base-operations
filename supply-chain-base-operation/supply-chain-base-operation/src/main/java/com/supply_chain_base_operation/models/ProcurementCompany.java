@@ -5,6 +5,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@SuperBuilder
 public class ProcurementCompany extends Company{
     private String procurementCompanyCode;
     private String procurementModel;

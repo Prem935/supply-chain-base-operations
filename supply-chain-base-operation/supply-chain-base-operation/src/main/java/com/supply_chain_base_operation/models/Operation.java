@@ -5,12 +5,14 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "operations")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@SuperBuilder
 public class Operation extends GlobalRecord{
     private String operationId;
     private String operationName;

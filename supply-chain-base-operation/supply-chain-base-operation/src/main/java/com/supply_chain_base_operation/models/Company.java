@@ -6,12 +6,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "companies")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@SuperBuilder
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Company extends GlobalRecord{
     private String companyId;
