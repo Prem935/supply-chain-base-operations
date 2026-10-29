@@ -18,4 +18,8 @@ public class EmployeeService {
     public Employee save(Employee employee){
         return employeeRepository.save(employee);
     }
+
+    public Employee findUserByWorkEmail(String email){
+        return employeeRepository.findByWorkEmail(email);
+    }
 }
