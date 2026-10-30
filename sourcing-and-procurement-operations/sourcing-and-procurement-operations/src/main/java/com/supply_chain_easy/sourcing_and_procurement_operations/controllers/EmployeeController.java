@@ -6,9 +6,12 @@ import com.supply_chain_base_operation.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("/spo/api/v1/emp")
@@ -21,8 +24,11 @@ public class EmployeeController {
         this.authService = authService;
     }
 
+    @PostMapping("/login")
     public ResponseEntity login(@RequestBody LoginRequestDto loginRequestDto){
-        Employee employee = authService.authenticateUser(loginRequestDto.getEmail(), loginRequestDto.getPassword());
-        return new ResponseEntity<>(employee, HttpStatus.OK);
+        String token = authService.authenticateUser(loginRequestDto.getEmail(), loginRequestDto.getPassword());
+        HashMap<String, String> resp = new HashMap<>();
+        resp.put("token", token);
+        return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 }
